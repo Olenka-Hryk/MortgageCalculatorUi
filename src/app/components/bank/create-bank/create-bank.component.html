@@ -1,0 +1,94 @@
+<div class="panel panel-primary">
+  <div class="panel-body text-center">
+    <h1 class="text-center" style="margin: 40px">Create a new bank</h1>
+    <div class="text-sm-center" [hidden]="submitted">
+      <form
+        class="needs-validation"
+        #form="ngForm"
+        (ngSubmit)="onSubmit(form)"
+        novalidate
+      >
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Name of the bank"
+            required
+            [(ngModel)]="bank.name"
+            name="name"
+          />
+          <label for="name">Bank name: </label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="interestRate"
+            placeholder="%"
+            required
+            [(ngModel)]="bank.interestRate"
+            name="interestRate"
+          />
+          <label for="name">Interest rate %: </label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="maximumLoan"
+            placeholder="$"
+            required
+            [(ngModel)]="bank.maximumLoan"
+            name="maximumLoan"
+          />
+          <label for="name">Maximum loan $: </label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="minimumDownPayment"
+            placeholder="$"
+            required
+            [(ngModel)]="bank.minimumDownPayment"
+            name="minimumDownPayment"
+          />
+          <label for="name">Minimum down payment $: </label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="loanTerm"
+            placeholder="month"
+            required
+            [(ngModel)]="bank.loanTerm"
+            name="loanTerm"
+          />
+          <label for="name">Loan term (month): </label>
+        </div>
+
+        <button
+          (click)="goBack()"
+          type="submit"
+          class="btn btn-primary btn-lg"
+          style="margin-left: 10px"
+        >
+          Back
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success btn-lg"
+          style="margin-left: 10px"
+        >
+          Create
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

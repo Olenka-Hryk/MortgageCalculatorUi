@@ -1,0 +1,72 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1 class="text-center" style="margin: 40px">Banks management</h1>
+    <div class="text-end" style="margin: 20px">
+      <button
+        type="button"
+        class="btn btn-success btn-lg"
+        (click)="createBank()"
+        style="margin-left: 10px"
+      >
+        Create a new bank
+      </button>
+      <button
+        type="button"
+        class="btn btn-success btn-lg"
+        (click)="onMortgageCalculator()"
+        style="margin-left: 10px"
+      >
+        Mortgage calculator
+      </button>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="delete-error" *ngIf="deleteError">Can't delete bank</div>
+    <table class="table table-striped table-hover table-secondary">
+      <thead class="table-dark">
+        <tr>
+          <th>Bank name</th>
+          <th>Interest rate</th>
+          <th>Maximum loan</th>
+          <th>Minimum down payment</th>
+          <th>Loan term</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bank of banks">
+          <td>{{ bank.name }}</td>
+          <td>{{ bank.interestRate }}</td>
+          <td>{{ bank.maximumLoan }}</td>
+          <td>{{ bank.minimumDownPayment }}</td>
+          <td>{{ bank.loanTerm }}</td>
+          <td>
+            <button
+              (click)="bankDetails(bank._id)"
+              class="btn btn-outline-primary"
+              style="margin-left: 10px"
+            >
+              Details
+            </button>
+            <button
+              (click)="updateBank(bank._id)"
+              class="btn btn-outline-success"
+              style="margin-left: 10px"
+            >
+              Edit
+            </button>
+            <button
+              (click)="deleteBank(bank._id)"
+              class="btn btn-outline-danger"
+              style="margin-left: 10px"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

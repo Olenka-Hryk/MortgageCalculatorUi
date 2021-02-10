@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+  <div class="panel-body text-center">
+    <h1 class="text-center" style="margin: 40px">Bank Details</h1>
+    <dl class="row" *ngIf="bank">
+      <dt class="col-sm-6 text-sm-end">Bank name:</dt>
+      <dd class="col-sm-6 text-sm-start">{{ bank.name }}</dd>
+
+      <dt class="col-sm-6 text-sm-end">Interest rate:</dt>
+      <dd class="col-sm-6 text-sm-start">{{ bank.interestRate }} %</dd>
+
+      <dt class="col-sm-6 text-sm-end">Maximum loan:</dt>
+      <dd class="col-sm-6 text-sm-start">{{ bank.maximumLoan }} $</dd>
+
+      <dt class="col-sm-6 text-sm-end">Minimum down payment:</dt>
+      <dd class="col-sm-6 text-sm-start">{{ bank.minimumDownPayment }} $</dd>
+
+      <dt class="col-sm-6 text-sm-end">Loan term:</dt>
+      <dd class="col-sm-6 text-sm-start">{{ bank.loanTerm }} month</dd>
+    </dl>
+    <button (click)="goBack()" class="btn btn-primary btn-lg">
+      Back to bank management
+    </button>
+  </div>
+</div>

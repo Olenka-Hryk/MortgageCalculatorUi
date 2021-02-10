@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+  <div class="panel-body text-center">
+    <h2 class="text-center" style="margin: 20px">Banks loan history</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-hover table-secondary">
+      <thead class="table-dark">
+        <tr>
+          <th>Bank name</th>
+          <th>Initial loan</th>
+          <th>Down payment</th>
+          <th>Mortgage payment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mortgage of mortgages">
+          <td>{{ (mortgage | bank).name }}</td>
+          <td>{{ mortgage.initialLoan }}</td>
+          <td>{{ mortgage.downPayment }}</td>
+          <td>{{ mortgage.monthlyMortgagePayment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

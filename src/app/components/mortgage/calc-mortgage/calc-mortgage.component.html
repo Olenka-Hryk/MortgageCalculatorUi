@@ -1,0 +1,126 @@
+<div class="panel panel-primary">
+  <div class="panel-body text-center">
+    <h1 class="text-center" style="margin: 40px">Mortgage calculator</h1>
+    <div class="text-end" style="margin: 20px">
+      <input
+        type="radio"
+        class="btn-check"
+        name="options-outlined"
+        id="success-outlined-1"
+        autocomplete="off"
+      />
+      <label
+        type="submit"
+        class="btn btn-outline-success btn-lg"
+        for="success-outlined-1"
+        (click)="onLoanHistory()"
+        style="margin-left: 10px"
+      >
+        Display a loan history
+      </label>
+      <input
+        type="radio"
+        class="btn-check"
+        name="options-outlined"
+        id="success-outlined-2"
+        autocomplete="off"
+        checked
+      />
+      <label
+        type="submit"
+        class="btn btn-outline-success btn-lg"
+        for="success-outlined-2"
+        (click)="onOfLoanHistory()"
+        style="margin-left: 10px"
+      >
+        Hide a loan history
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="text-sm-center" *ngIf="hasError">
+  The entered data don't satisfy the conditions of the selected bank. Please,
+  check that the entered data meets the condition.
+</div>
+
+<div class="text-sm-center" [hidden]="calculated">
+  <form
+    class="needs-validation"
+    #form="ngForm"
+    (ngSubmit)="onCalculate(form)"
+    novalidate
+  >
+    <div class="input-group flex-nowrap" style="margin: 10px">
+      <span class="input-group-text" id="addon-wrapping">Bank name: </span>
+      <select
+        class="form-select"
+        required
+        name="bank"
+        [(ngModel)]="selectedBankId"
+      >
+        <option *ngFor="let bank of banks" [value]="bank._id">
+          {{ bank.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="input-group flex-nowrap" style="margin: 10px">
+      <span class="input-group-text" id="addon-wrapping">Initial loan: </span>
+      <input
+        type="number"
+        class="form-control"
+        id="initialLoan"
+        required
+        [(ngModel)]="mortgage.initialLoan"
+        name="initialLoan"
+      />
+      <span class="input-group-text" id="basic-addon2">$</span>
+    </div>
+
+    <div class="input-group flex-nowrap" style="margin: 10px">
+      <span class="input-group-text" id="addon-wrapping">Down payment: </span>
+      <input
+        type="number"
+        class="form-control"
+        id="downPayment"
+        required
+        [(ngModel)]="mortgage.downPayment"
+        name="downPayment"
+      />
+      <span class="input-group-text" id="basic-addon2">$</span>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-lg">Calculate</button>
+  </form>
+</div>
+
+<div class="text-sm-center" [hidden]="!calculated">
+  <h4>
+    Calculated successfully! Result: {{ mortgage.monthlyMortgagePayment }}
+  </h4>
+  <h5>
+    You can view the history of bank loans or calculate new monthly mortgage
+    payment.
+  </h5>
+  <button
+    type="button"
+    class="btn btn-success btn-lg"
+    style="margin-left: 10px"
+    (click)="onLoanHistory()"
+  >
+    Loan history
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary btn-lg"
+    style="margin-left: 10px"
+    (click)="goBack()"
+  >
+    Mortgage calculator
+  </button>
+</div>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

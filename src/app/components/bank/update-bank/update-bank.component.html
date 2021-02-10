@@ -1,0 +1,80 @@
+<div class="panel panel-primary">
+  <div class="panel-body text-center">
+    <h1 class="text-center" style="margin: 40px">Update Bank</h1>
+    <div class="text-sm-center" [hidden]="submitted">
+      <form
+        class="needs-validation"
+        #form="ngForm"
+        (ngSubmit)="onSubmit(form)"
+        novalidate
+      >
+        <div class="input-group flex-nowrap" style="margin: 10px">
+          <span class="input-group-text" id="addon-wrapping">Bank name: </span>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="bank.name"
+            name="name"
+          />
+        </div>
+        <div class="input-group flex-nowrap" style="margin: 10px">
+          <span class="input-group-text" id="addon-wrapping"
+            >Interest rate:
+          </span>
+          <input
+            type="number"
+            class="form-control"
+            id="interestRate"
+            required
+            [(ngModel)]="bank.interestRate"
+            name="interestRate"
+          />
+          <span class="input-group-text" id="basic-addon2">%</span>
+        </div>
+        <div class="input-group flex-nowrap" style="margin: 10px">
+          <span class="input-group-text" id="addon-wrapping"
+            >Maximum loan:
+          </span>
+          <input
+            type="number"
+            class="form-control"
+            id="maximumLoan"
+            required
+            [(ngModel)]="bank.maximumLoan"
+            name="maximumLoan"
+          />
+          <span class="input-group-text" id="basic-addon2">$</span>
+        </div>
+        <div class="input-group flex-nowrap" style="margin: 10px">
+          <span class="input-group-text" id="addon-wrapping"
+            >Minimum down payment:
+          </span>
+          <input
+            type="number"
+            class="form-control"
+            id="minimumDownPayment"
+            required
+            [(ngModel)]="bank.minimumDownPayment"
+            name="minimumDownPayment"
+          />
+          <span class="input-group-text" id="basic-addon2">$</span>
+        </div>
+        <div class="input-group flex-nowrap" style="margin: 10px">
+          <span class="input-group-text" id="addon-wrapping">Loan term: </span>
+          <input
+            type="number"
+            class="form-control"
+            id="loanTerm"
+            required
+            [(ngModel)]="bank.loanTerm"
+            name="loanTerm"
+          />
+          <span class="input-group-text" id="basic-addon2">month</span>
+        </div>
+        <button type="submit" class="btn btn-success btn-lg">Update</button>
+      </form>
+    </div>
+  </div>
+</div>
